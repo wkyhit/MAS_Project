@@ -73,7 +73,7 @@ public class Parameters {
      */
     // Fuel management
     public static final double fuelThreshold = 0.5;
-    public static final double hardFuelLimit = 50;
+    public static final double hardFuelLimit = 120;
     // Agent target selection
     public static final double objectLifetimeThreshold = 1.0;
     // Agent communication

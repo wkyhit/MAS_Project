@@ -16,6 +16,7 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
     private final static int MAX_TIME = Parameters.lifeTime;//need to change
     private final static float MEM_DECAY = 0.5f;
     private ObjectGrid2D memoryGrid;
+    private boolean[][] gridVis; // use to check whether the assigned zone is fully explored
     protected int memorySize;
     protected TWAgentPercept[][] objects;
     protected Int2D fuelStation;
@@ -32,6 +33,7 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
         this.memoryGrid = new ObjectGrid2D(me.getEnvironment().getxDimension(), me.getEnvironment().getyDimension());
         int sensorRange = Parameters.defaultSensorRange * 2 + 1;
         this.sensedMemory = new TWAgentPercept[sensorRange][sensorRange];
+        this.gridVis = new boolean[me.getEnvironment().getxDimension()][me.getEnvironment().getyDimension()];
     }
 
     /**
@@ -45,6 +47,17 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
             return 0;
         else
             return (Parameters.lifeTime * threshold) - (this.schedule.getTime() - objects[o.getX()][o.getY()].getT());
+    }
+
+    public boolean isZoneAllVisited(int x_start,int x_end, int y_start,int y_end){
+        for (int i=x_start; i<x_end; i++){
+            for (int j=y_start; j<y_end;j++){
+                if (this.gridVis[i][j]==false){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     //get the nearby indicated objects in the zone
@@ -102,6 +115,8 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
                     // re-set the sensor range memory to null
                     objects[tmp_x][tmp_y] = null;
                     memoryGrid.set(tmp_x,tmp_y,null);
+                    // set the grid to visited
+                    gridVis[tmp_x][tmp_y] = true;
                 }
             }
         }

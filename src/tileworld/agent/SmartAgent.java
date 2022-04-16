@@ -330,23 +330,31 @@ public class SmartAgent extends TWAgent {
         /**
          * default: explore(except backtrace)
          */
-        mode = Mode.EXPLORE;
+        if (mode != Mode.REFUEL){
+            mode = Mode.EXPLORE;
+        }
 
         /**
          * priority: 1- find fuel or refuel
          * 2-ensure carried-tiles>0
          * 3-fill hole
          */
-        if (this.fuelStation==null && this.fuelLevel<this.fuelLimit){
-            // reach the fuel limit and have not found station, need to wait for other agent find the station
+        if (this.fuelStation==null && this.fuelLevel<this.fuelLimit && agentAreaMemory.isZoneAllVisited(zone_coordinates[0].x,zone_coordinates[1].x,zone_coordinates[0].y,zone_coordinates[3].y)){
+            // (reach the fuel limit && already completely scan the own zone) and have not found station, need to wait for other agent find the station
             mode = Mode.WAIT;
         }
         else if (this.fuelStation == null) {
             mode = Mode.EXPLORE;
-        } else if (this.fuelStation != null && this.getDistanceTo(fuelStation.x, fuelStation.y) >= this.fuelLevel * this.fuelThreshold) {
+        }
+        // if meet the refuel condition or already on the road of refueling
+        else if ((this.fuelStation != null && this.getDistanceTo(fuelStation.x, fuelStation.y) >= this.fuelLevel * this.fuelThreshold) || this.mode==Mode.REFUEL) {
             // need to refuel
             mode = Mode.REFUEL;
-        } else if (!this.hasTile()) {
+        }
+        else if(this.fuelStation != null && this.getDistanceTo(fuelStation.x, fuelStation.y) <= Parameters.defaultSensorRange*2 && this.fuelLevel<Parameters.defaultFuelLevel-Parameters.defaultSensorRange*15){
+            mode = Mode.REFUEL;
+        }
+        else if (!this.hasTile()) {
             // if not tiles, collect the detected tiles if have
             if (tilesList.size() > 0) {
                 mode = Mode.COLLECT;
@@ -399,7 +407,7 @@ public class SmartAgent extends TWAgent {
 
             return new TWThought(TWAction.PUTDOWN, null);
         } else if (cur_object instanceof TWFuelStation && this.fuelLevel < Parameters.defaultFuelLevel * 0.99) {
-
+            this.mode = Mode.EXPLORE;//reset the mode
             return new TWThought(TWAction.REFUEL, null);
         }
         /**

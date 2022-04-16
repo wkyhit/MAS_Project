@@ -27,7 +27,7 @@ public class TileworldMain {
 	
 	public static void main(String args[]) throws InterruptedException {
 		int overallScore = 0; 
-		int iteration = 5;
+		int iteration = 20;
 		for(int i = 0; i<iteration; i++) {
 			int seed = ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE);
 			System.out.println("Seed: "+seed);
