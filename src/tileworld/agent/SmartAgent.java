@@ -12,10 +12,9 @@ import java.util.PriorityQueue;
 public class SmartAgent extends TWAgent {
     //Agent action Mode
     enum Mode {
-        EXPLORE, COLLECT, FILL, REFUEL, WAIT, BACKTRACE
+        EXPLORE, COLLECT, FILL, REFUEL, WAIT
     }
 
-    private boolean permitAssistance = Parameters.permitAssistance;
     private double fuelThreshold = Parameters.fuelThreshold;
     private double fuelLimit = Parameters.hardFuelLimit;
     private double objectLifetimeThreshold = Parameters.objectLifetimeThreshold;
@@ -45,9 +44,6 @@ public class SmartAgent extends TWAgent {
     ArrayList<TWEntity> tilesList;
     ArrayList<TWEntity> holesList;
 
-    //store the holes and tiles
-    TWEntity[] goalTiles;
-    TWEntity[] goalHoles;
     //store the fuel station position
     private Int2D fuelStation;
 

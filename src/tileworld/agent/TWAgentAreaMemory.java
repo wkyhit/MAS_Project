@@ -23,7 +23,6 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
     protected TWAgentPercept[][] sensedMemory;
     protected HashMap<Class<?>, TWEntity> closestInSensorRange;
     static protected List<Int2D> spiral = new NeighbourSpiral(Parameters.defaultSensorRange * 4).spiral();
-    protected List<TWAgent> neighbouringAgents = new ArrayList<TWAgent>();
 
     public TWAgentAreaMemory(TWAgent moi, Schedule schedule, int x, int y) {
         super(moi, schedule, x, y);

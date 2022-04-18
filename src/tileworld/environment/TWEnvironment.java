@@ -122,7 +122,7 @@ public class TWEnvironment extends SimState implements Steppable {
         createAgent(new SmartAgent("agent3", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
         pos = this.generateRandomLocation();
         createAgent(new SmartAgent("agent4", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
-        pos = this.generateRandomLocation();
+//        pos = this.generateRandomLocation();
 //        createAgent(new SmartAgent("agent5", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
 
         //create the fueling station
