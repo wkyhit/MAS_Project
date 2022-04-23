@@ -45,7 +45,7 @@ public class Parameters {
     /**
      * params2
      */
-//    //Simulation Parameters
+//    Simulation Parameters
 //    public final static int seed = 4162012; //no effect with gui
 //    public static final long endTime = 5000; //no effect with gui
 //
@@ -68,12 +68,38 @@ public class Parameters {
 //    // the life time of each object
 //    public static final int lifeTime = 30;
 
+
+    /**
+     * params3
+     */
+    //Simulation Parameters
+//    public final static int seed = 4162012; //no effect with gui
+//    public static final long endTime = 5000; //no effect with gui
+//
+////    Agent Parameters
+//    public static final int defaultFuelLevel = 500;
+//    public static final int defaultSensorRange = 3;
+//
+//    //Environment Parameters
+//    public static final int xDimension = 100; //size in cells
+//    public static final int yDimension = 100;
+//
+//    //Object Parameters
+//    // mean, dev: control the number of objects to be created in every time step (i.e. average object creation rate)
+//    public static final double tileMean = 0.1;
+//    public static final double holeMean = 0.1;
+//    public static final double obstacleMean = 0.1;
+//    public static final double tileDev = 0.5f;
+//    public static final double holeDev = 0.5f;
+//    public static final double obstacleDev = 0.5f;
+//    // the life time of each object
+//    public static final int lifeTime = 50;
     /**
      * self-defined agent params
      */
     // Fuel management
     public static final double fuelThreshold = 0.5;
-    public static final double hardFuelLimit = 120;
-    // Agent target selection
+    public static final double hardFuelLimit = 100;
+
     public static final double objectLifetimeThreshold = 1.0;
 }

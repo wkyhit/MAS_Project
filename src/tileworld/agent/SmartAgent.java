@@ -97,8 +97,8 @@ public class SmartAgent extends TWAgent {
         }
         if (this.zone_coordinates[0] != null) {// not the init stage
             // get the tiles and holes in the zone that current agent belong to
-            tile_queue_zone = agentAreaMemory.getNearbyObjects(zone_coordinates, TWTile.class);
-            hole_queue_zone = agentAreaMemory.getNearbyObjects(zone_coordinates, TWHole.class);
+            tile_queue_zone = agentAreaMemory.getObjectsInZone(zone_coordinates, TWTile.class);
+            hole_queue_zone = agentAreaMemory.getObjectsInZone(zone_coordinates, TWHole.class);
 
             //need to reset
             tilesList.clear();
@@ -365,20 +365,10 @@ public class SmartAgent extends TWAgent {
 
                 mode = Mode.FILL;
             } else {
-                mode = Mode.COLLECT;
+                    mode = Mode.COLLECT;
             }
         }
-//        else if (holesList.size() > 0) {
-//            //carried tiles upto limit || no tiles detected
-//            if (this.carriedTiles.size() > 3 || (tilesList.size() == 0 && this.carriedTiles.size()>0)) {
-//                mode = Mode.FILL;
-//            } else if (tilesList.size()>0 && (this.getDistanceTo(tilesList.get(0)) > getDistanceTo(holesList.get(0)))) {
-//                // if the closest tile farther than closest hole: fill the hole
-//                mode = Mode.FILL;
-//            } else if(tilesList.size()>0){
-//                mode = Mode.COLLECT;
-//            }
-//        }
+
         else if (this.carriedTiles.size() < 3 && tilesList.size() > 0) {
             //if there is only tile nearby
             mode = Mode.COLLECT;

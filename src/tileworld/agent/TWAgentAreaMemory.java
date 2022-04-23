@@ -60,7 +60,7 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
     }
 
     //get the nearby indicated objects in the zone
-    protected PriorityQueue<TWEntity> getNearbyObjects(Int2D[] coordinates, Class<?> type) {
+    protected PriorityQueue<TWEntity> getObjectsInZone(Int2D[] coordinates, Class<?> type) {
         TWObject object = null;
         // rank by distance
         PriorityQueue<TWEntity> queue = new PriorityQueue<>(10, new Comparator<TWEntity>() {
@@ -125,15 +125,6 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
             if(!(o instanceof TWEntity)){
                 continue;
             }
-//            int sensor_x = o.getX() - sensor_start_x;
-//            int sensor_y = o.getY() - sensor_start_y;
-//            if (!(o instanceof TWEntity)) {
-//                // if used to exited, but now disappear: size-1
-//                if (sensedMemory[sensor_x][sensor_y]!=null){
-//                    memorySize --;
-//                }
-//                continue;
-//            }
             /**
              * find the fuel station
              */
