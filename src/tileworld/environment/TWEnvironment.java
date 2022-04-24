@@ -11,12 +11,10 @@ import sim.engine.Steppable;
 import sim.field.grid.ObjectGrid2D;
 import sim.util.Bag;
 import sim.util.Int2D;
-import sun.font.TrueTypeFont;
 import tileworld.Parameters;
 import tileworld.TWGUI;
 import tileworld.agent.Message;
-import tileworld.agent.SimpleTWAgent;
-import tileworld.agent.SmartAgent;
+import tileworld.agent.CMDAgent;
 import tileworld.agent.TWAgent;
 
 /**
@@ -115,13 +113,13 @@ public class TWEnvironment extends SimState implements Steppable {
 //        createAgent(new SimpleTWAgent("agent2", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
 
         Int2D pos = this.generateRandomLocation();
-        createAgent(new SmartAgent("agent1", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
+        createAgent(new CMDAgent("agent1", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
         pos = this.generateRandomLocation();
-        createAgent(new SmartAgent("agent2", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
+        createAgent(new CMDAgent("agent2", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
         pos = this.generateRandomLocation();
-        createAgent(new SmartAgent("agent3", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
+        createAgent(new CMDAgent("agent3", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
         pos = this.generateRandomLocation();
-        createAgent(new SmartAgent("agent4", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
+        createAgent(new CMDAgent("agent4", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
 //        pos = this.generateRandomLocation();
 //        createAgent(new SmartAgent("agent5", pos.getX(), pos.getY(), this, Parameters.defaultFuelLevel));
 //        pos = this.generateRandomLocation();

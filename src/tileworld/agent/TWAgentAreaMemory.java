@@ -66,7 +66,7 @@ public class TWAgentAreaMemory extends TWAgentWorkingMemory {
         PriorityQueue<TWEntity> queue = new PriorityQueue<>(10, new Comparator<TWEntity>() {
             @Override
             public int compare(TWEntity o1, TWEntity o2) {
-                return (int) (((SmartAgent) me).getDistanceTo(o1) - ((SmartAgent) me).getDistanceTo(o2));
+                return (int) (((CMDAgent) me).getDistanceTo(o1) - ((CMDAgent) me).getDistanceTo(o2));
             }
         });
         //

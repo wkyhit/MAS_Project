@@ -9,7 +9,7 @@ import tileworld.planners.DefaultTWPlanner;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-public class SmartAgent extends TWAgent {
+public class CMDAgent extends TWAgent {
     //Agent action Mode
     enum Mode {
         EXPLORE, COLLECT, FILL, REFUEL, WAIT
@@ -48,7 +48,7 @@ public class SmartAgent extends TWAgent {
     private Int2D fuelStation;
 
 
-    public SmartAgent(String name, int xpos, int ypos, TWEnvironment env, double fuelLevel) {
+    public CMDAgent(String name, int xpos, int ypos, TWEnvironment env, double fuelLevel) {
         super(xpos, ypos, env, fuelLevel);
         this.name = name;
         this.fuelStation = null;

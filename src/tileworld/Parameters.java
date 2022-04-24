@@ -99,7 +99,7 @@ public class Parameters {
      */
     // Fuel management
     public static final double fuelThreshold = 0.5;
-    public static final double hardFuelLimit = 100;
+    public static final double hardFuelLimit = 200;
 
-    public static final double objectLifetimeThreshold = 1.0;
+    public static final double objectLifetimeThreshold = 0.9;
 }
